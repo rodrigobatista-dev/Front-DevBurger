@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 
 import Logo from '../../assets/Logo.svg'
-import { Button } from '../../components/Button' // eslint-disable-line no-unused-vars
+import { Button } from '../../components/Button'
 import { api } from '../../services/api'
 import {
   Container,
@@ -14,9 +15,11 @@ import {
   LeftContainer,
   RightContainer,
   Title,
+  Link,
 } from './styles'
 
 export function Register() {
+  const navigate = useNavigate()
   const schema = yup
     .object({
       name: yup.string().required('O nome é Obrigaório'),
@@ -55,9 +58,12 @@ export function Register() {
         {
           validateStatus: () => true,
         },
-      );
+      )
 
       if (status === 200 || status === 201) {
+        setTimeout(() => {
+          navigate('/')
+        }, 2000)
         toast.success('Conta criada com sucesso!')
       } else if (status === 400) {
         toast.error('Email já cadastro! Faça o login para continuar ')
@@ -69,45 +75,44 @@ export function Register() {
     }
   }
 
-    return (
-      <Container>
-        <LeftContainer>
-          <img src={Logo} alt="logo-devburger" />
-        </LeftContainer>
-        <RightContainer>
-          <Title>Criar Conta</Title>
-          <Form onSubmit={handleSubmit(onSubmit)}>
-            <InputContainer>
-              <label>Nome</label>
-              <input type="text" {...register('name')} />
-              <p>{errors?.name?.message}</p>
-            </InputContainer>
+  return (
+    <Container>
+      <LeftContainer>
+        <img src={Logo} alt="logo-devburger" />
+      </LeftContainer>
+      <RightContainer>
+        <Title>Criar Conta</Title>
+        <Form onSubmit={handleSubmit(onSubmit)}>
+          <InputContainer>
+            <label>Nome</label>
+            <input type="text" {...register('name')} />
+            <p>{errors?.name?.message}</p>
+          </InputContainer>
 
-            <InputContainer>
-              <label>Email</label>
-              <input type="email" {...register('email')} />
-              <p>{errors?.email?.message}</p>
-            </InputContainer>
+          <InputContainer>
+            <label>Email</label>
+            <input type="email" {...register('email')} />
+            <p>{errors?.email?.message}</p>
+          </InputContainer>
 
-            <InputContainer>
-              <label>Senha</label>
-              <input type="password" {...register('password')} />
-              <p>{errors?.password?.message}</p>
-            </InputContainer>
+          <InputContainer>
+            <label>Senha</label>
+            <input type="password" {...register('password')} />
+            <p>{errors?.password?.message}</p>
+          </InputContainer>
 
-            <InputContainer>
-              <label>Confirmar Senha</label>
-              <input type="password" {...register('confirmPassword')} />
-              <p>{errors?.confirmPassword?.message}</p>
-            </InputContainer>
+          <InputContainer>
+            <label>Confirmar Senha</label>
+            <input type="password" {...register('confirmPassword')} />
+            <p>{errors?.confirmPassword?.message}</p>
+          </InputContainer>
 
-            <Button type="submit">Criar Conta</Button>
-          </Form>
-          <p>
-            Já possui conta? <a>Clique aqui</a>
-          </p>
-        </RightContainer>
-      </Container>
-    )
-  }
-
+          <Button type="submit">Criar Conta</Button>
+        </Form>
+        <p>
+          Já possui conta? <Link to="/">Clique aqui</Link>
+        </p>
+      </RightContainer>
+    </Container>
+  )
+}

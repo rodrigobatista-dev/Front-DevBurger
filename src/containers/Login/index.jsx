@@ -1,11 +1,12 @@
 /* eslint-disable no-unused-vars */
 import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 
 import Logo from '../../assets/Logo.svg'
-import { Button } from '../../components/Button' // eslint-disable-line no-unused-vars
+import { Button } from '../../components/Button'
 import { api } from '../../services/api'
 import {
   Container,
@@ -14,9 +15,12 @@ import {
   LeftContainer,
   RightContainer,
   Title,
+  Link,
 } from './styles'
 
+
 export function Login() {
+  const navigate = useNavigate();
   const schema = yup
     .object({
       email: yup
@@ -44,15 +48,23 @@ export function Login() {
         email: data.email,
         password: data.password,
       }),
-     {
-      pending: 'Verificando seus dados',
-      success: 'Seja Bem-vindo 👌',
-      error: 'Email ou Senha Incorretos 🤯'
-    }
+      {
+        pending: 'Verificando seus dados',
+
+        success: {
+          render() {
+            setTimeout(() => {
+              navigate('/home')
+            }, 2000)
+
+            return `Seja Bem-vindo(a) 👌`
+          },
+        },
+        error: 'Email ou Senha Incorretos 🤯',
+      },
     )
 
     console.log(response)
-
   }
 
   return (
@@ -82,7 +94,7 @@ export function Login() {
           <Button type="submit">Entrar</Button>
         </Form>
         <p>
-          Não possui conta? <a>Clique aqui</a>
+          Não possui conta? <Link to="/cadastro">Clique aqui</Link>
         </p>
       </RightContainer>
     </Container>
