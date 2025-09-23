@@ -5,8 +5,9 @@ import { Login } from '../containers/Login'
 import { Register } from '../containers/Redister'
 
 export const router = createBrowserRouter([
+  
   {
-    path: '/login',
+    path: '/',
     element: <Login />,
   },
   {
