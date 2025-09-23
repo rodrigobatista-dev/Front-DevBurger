@@ -1,5 +1,6 @@
-import { createGlobalStyle } from "styled-components";
-
+/* eslint-disable no-unused-vars */
+import { ToastContainer, toast } from 'react-toastify'
+import { createGlobalStyle } from 'styled-components'
 const globalStyles = createGlobalStyle`
 
 * {
@@ -17,6 +18,6 @@ button,a {
     
 }
 
-`;
+`
 
-export default globalStyles;
+export default globalStyles

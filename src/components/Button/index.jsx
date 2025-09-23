@@ -1,12 +1,12 @@
-import PropTypes from "prop-types"
+/* eslint-disable no-unused-vars */
+import PropTypes from 'prop-types'
 
-import { ContainerButton } from "./styles"
+import { ContainerButton } from './styles'
 
 export function Button({ children, ...props }) {
-   
-    return <ContainerButton { ...props }>{children}</ContainerButton>
+  return <ContainerButton {...props}>{children}</ContainerButton>
 }
 
 Button.propTypes = {
-    children: PropTypes.node,
+  children: PropTypes.node,
 }

@@ -1,9 +1,12 @@
-import { yupResolver } from "@hookform/resolvers/yup";
-import { useForm } from "react-hook-form";
-import * as yup from "yup";
+/* eslint-disable no-unused-vars */
+import { yupResolver } from '@hookform/resolvers/yup'
+import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
+import * as yup from 'yup'
 
-import Logo from "../../assets/Logo.svg";
-import { Button } from "../../components/Button"; // eslint-disable-line no-unused-vars
+import Logo from '../../assets/Logo.svg'
+import { Button } from '../../components/Button' // eslint-disable-line no-unused-vars
+import { api } from '../../services/api'
 import {
   Container,
   Form,
@@ -11,7 +14,7 @@ import {
   LeftContainer,
   RightContainer,
   Title,
-} from "./styles";
+} from './styles'
 
 export function Login() {
   const schema = yup
@@ -25,7 +28,7 @@ export function Login() {
         .min(6, 'A senha tem que conter 6 caracteres')
         .required('A senha é obrigatória'),
     })
-    .required();
+    .required()
 
   const {
     register,
@@ -33,8 +36,24 @@ export function Login() {
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
-  });
-  const onSubmit = (data) => console.log(data);
+  })
+
+  const onSubmit = async (data) => {
+    const response = await toast.promise(
+      api.post('/sessions', {
+        email: data.email,
+        password: data.password,
+      }),
+     {
+      pending: 'Verificando seus dados',
+      success: 'Seja Bem-vindo 👌',
+      error: 'Email ou Senha Incorretos 🤯'
+    }
+    )
+
+    console.log(response)
+
+  }
 
   return (
     <Container>
@@ -50,13 +69,13 @@ export function Login() {
         <Form onSubmit={handleSubmit(onSubmit)}>
           <InputContainer>
             <label>Email</label>
-            <input type="email" {...register("email")} />
+            <input type="email" {...register('email')} />
             <p>{errors?.email?.message}</p>
           </InputContainer>
 
           <InputContainer>
             <label>Senha</label>
-            <input type="password" {...register("password")} />
+            <input type="password" {...register('password')} />
             <p>{errors?.password?.message}</p>
           </InputContainer>
 
@@ -67,5 +86,5 @@ export function Login() {
         </p>
       </RightContainer>
     </Container>
-  );
+  )
 }
