@@ -1,9 +1,22 @@
+/* eslint-disable no-unused-vars */
+import { CategoriesCarousel } from "../../components/CategoriesCarousel";
+import { Banner, Container, Content } from "./styles";
 
 
 export function Home(){
 
 
     return (
-        <h1>Home</h1>
+        <main>
+            <Banner>
+                <h1>Bem-vindo(a)!</h1>
+            </Banner>
+            <Container>
+                <Content>
+                    <CategoriesCarousel />
+                    <div>Carrossel Produtos</div>
+                </Content>
+            </Container>
+        </main>
     );
 }
