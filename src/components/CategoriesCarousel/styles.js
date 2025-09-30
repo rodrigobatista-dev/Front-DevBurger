@@ -3,7 +3,17 @@ import styled from "styled-components";
 export const Container = styled.div`
 .carousel-item {
     padding-right: 45px;
+    cursor: grab;
 
+}
+.react-multiple-carousel__arrow--left {
+  top: 10px;
+  left: 15px;
+}
+
+.react-multiple-carousel__arrow--right {
+  top: 10px;
+  right: 15;
 }
 
 padding: 40px;
