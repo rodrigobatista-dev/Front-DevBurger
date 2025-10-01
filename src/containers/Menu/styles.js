@@ -1,46 +1,76 @@
-import styled from "styled-components";
+import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
-import BannerHamburger from '../../assets/banner-hamburger.svg';
+import Background from '../../assets/background.svg'
+import BannerHamburger from '../../assets/banner-hamburger.svg'
 
 export const Container = styled.div`
-width: 100%;
-min-height: 100vh;
-background-color: #f0f0f0;
-`;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #f0f0f0;
+
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('${Background}');
+`
 
 export const Banner = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 100%;
+  position: relative;
+
+  background: url('${BannerHamburger}');
+  background-color: #1f1f1f;
+  background-position: center;
+  background-size: cover;
+
+  h1 {
+    font-family: 'Road Rage', sans-serif;
+    font-size: 70px;
+    line-height: 60px;
+    position: absolute;
+    color: #fff;
+
+    right: 13%;
+    top: 20%;
+
+    span {
+      display: block;
+      color: #fff;
+      font-size: 20px;
+    }
+  }
+`
+
+export const CategoryMenu = styled.div`
 display: flex;
 justify-content: center;
-align-items: center;
-height: 400px;
-width: 100%;
-position: relative;
+gap: 50px;
+margin-top: 30px;
+`
 
-background: url('${BannerHamburger}');
-background-color: #1f1f1f;
-background-position: center;
-background-size: cover;
+export const CategoryButton = styled(Link)`
+text-decoration: none;
+cursor: pointer;
+background: none;
+color: ${(props) => (props.$isActiveCategoty ? '#9758a6;' : '#696969')};
+font-size: 24px;
+font-weight: 500;
+padding-bottom: 5px;
+line-height: 20px;
+border: none;
+border-bottom: ${(props) => props.$isActiveCategoty && '3px solid #9758a6' };
+`
 
-h1 {
-     font-family: "Road Rage", sans-serif;
-     font-size: 70px;
-     line-height: 60px;
-     position: absolute;
-     color: #fff;
-
-     right: 13%;
-     top: 20%;
-
-     span {
-        display: block;
-        color: #fff;
-        font-size: 20px;
-
-     }
-}
-
-`;
-
-export const CategoryMenu = styled.div``;
-
-export const ProductsContainer = styled.div``;
+export const ProductsContainer = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  padding: 40px;
+  gap: 60px;
+  justify-content: center;
+  max-width: 1280px;
+  margin: 50px auto;
+`
