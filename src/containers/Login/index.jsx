@@ -7,6 +7,7 @@ import * as yup from 'yup'
 
 import Logo from '../../assets/Logo.svg'
 import { Button } from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import { api } from '../../services/api'
 import {
   Container,
@@ -18,9 +19,10 @@ import {
   Link,
 } from './styles'
 
-
 export function Login() {
-  const navigate = useNavigate();
+  const navigate = useNavigate()
+  const { putUserData } = useUser();
+
   const schema = yup
     .object({
       email: yup
@@ -43,7 +45,7 @@ export function Login() {
   })
 
   const onSubmit = async (data) => {
-    const { data: { token } } = await toast.promise(
+    const { data: userData } = await toast.promise(
       api.post('/sessions', {
         email: data.email,
         password: data.password,
@@ -62,10 +64,10 @@ export function Login() {
         },
         error: 'Email ou Senha Incorretos 🤯',
       },
-    )
-
-    localStorage.setItem('token', token);
-  }
+    );
+    putUserData(userData);
+    
+  };
 
   return (
     <Container>

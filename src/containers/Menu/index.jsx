@@ -11,6 +11,7 @@ import {
   CategoryMenu,
   ProductsContainer,
   CategoryButton,
+  ButtonVoltar,
 } from './styles'
 
 export function Menu() {
@@ -25,12 +26,12 @@ export function Menu() {
   const queryParams = new URLSearchParams(search)
 
   const [activeCategory, setActiveCategory] = useState(() => {
-    const categoryId = +queryParams.get('categoria');
+    const categoryId = +queryParams.get('categoria')
 
     if (categoryId) {
-      return categoryId;
+      return categoryId
     }
-    return 0;
+    return 0
   })
 
   useEffect(() => {
@@ -100,6 +101,16 @@ export function Menu() {
             {category.name}
           </CategoryButton>
         ))}
+
+        <ButtonVoltar
+          onClick={() => {
+            navigate({
+              pathname: '/home',
+            })
+          }}
+        >
+          voltar
+        </ButtonVoltar>
       </CategoryMenu>
 
       <ProductsContainer>

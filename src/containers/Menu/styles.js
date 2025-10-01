@@ -46,23 +46,23 @@ export const Banner = styled.div`
 `
 
 export const CategoryMenu = styled.div`
-display: flex;
-justify-content: center;
-gap: 50px;
-margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+  margin-top: 30px;
 `
 
 export const CategoryButton = styled(Link)`
-text-decoration: none;
-cursor: pointer;
-background: none;
-color: ${(props) => (props.$isActiveCategoty ? '#9758a6;' : '#696969')};
-font-size: 24px;
-font-weight: 500;
-padding-bottom: 5px;
-line-height: 20px;
-border: none;
-border-bottom: ${(props) => props.$isActiveCategoty && '3px solid #9758a6' };
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  color: ${(props) => (props.$isActiveCategoty ? '#9758a6;' : '#696969')};
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  line-height: 20px;
+  border: none;
+  border-bottom: ${(props) => props.$isActiveCategoty && '3px solid #9758a6'};
 `
 
 export const ProductsContainer = styled.div`
@@ -73,4 +73,32 @@ export const ProductsContainer = styled.div`
   justify-content: center;
   max-width: 1280px;
   margin: 50px auto;
+`
+export const ButtonVoltar = styled(Link)`
+  text-decoration: none;
+  cursor: pointer;
+  background: none;
+  color: #696969;
+  font-size: 24px;
+  font-weight: 500;
+  padding-bottom: 5px;
+  line-height: 20px;
+  border: none;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    right: 100%;
+    width: 0;
+    height: 4px;
+    background-color: #9758a6;
+    transition: all 0.3s ease;
+  }
+
+  &:hover::after {
+      right: 0;
+    width: 100%;
+  }
 `

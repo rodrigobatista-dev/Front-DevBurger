@@ -1,0 +1,8 @@
+/* eslint-disable no-unused-vars */
+import { UserProvider } from './UserContext';
+
+const AppProvider = ({ children }) => {
+  return <UserProvider>{children}</UserProvider>
+}
+
+export default AppProvider
