@@ -5,10 +5,10 @@ import { Header } from '../components/Header'
 import { Home } from '../containers/Home'
 import { Login } from '../containers/Login'
 import { Menu } from '../containers/Menu'
-import { Register } from '../containers/Redister'
+import { Register } from '../containers/Register'
 export const router = createBrowserRouter([
   {
-    path: '/home',
+    path: '/',
     element: (
       <>
         <Header />
@@ -26,6 +26,11 @@ export const router = createBrowserRouter([
   },
   {
     path: '/cardapio',
-    element: <Menu />,
+    element: (
+      <>
+        <Header />
+        <Menu />
+      </>
+    ),
   },
 ])

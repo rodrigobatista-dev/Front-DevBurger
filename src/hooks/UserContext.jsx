@@ -12,6 +12,7 @@ export const UserProvider = ({ children }) => {
   }
 
   const logout = () => {
+    setUserInfo({ })
     localStorage.removeItem('devburger:userData')
   }
 
