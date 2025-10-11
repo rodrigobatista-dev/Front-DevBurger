@@ -51,8 +51,8 @@ export const Title = styled.h1`
 `
 
 export const Content = styled.div`
-  display: flex;
-  grid-template-columns: 1fr 20%;
+  display: grid;
+  grid-template-columns: 1fr 30%;
   gap: 40px;
   width: 100%;
   max-width: 1280px;
