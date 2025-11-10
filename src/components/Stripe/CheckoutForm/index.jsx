@@ -58,11 +58,12 @@ export function CheckoutForm() {
 
         if (status === 200 || status === 201) {
           setTimeout(() => {
-            navigate('/complete')
-            clearCart()
+            navigate(
+              `/complete?payment_intent_client_secret=${paymentIntent.client_secret}`,
+            )
           }, 3000)
-          toast.success('Pedido realizado com sucesso!')
           clearCart()
+          toast.success('Pedido realizado com sucesso!')
         } else if (status === 409) {
           toast.error('Falha ao realizar o pedido.')
         } else {

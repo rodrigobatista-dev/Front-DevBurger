@@ -1,17 +1,17 @@
-import { Link as ReactLink } from "react-router-dom";
-import styled from "styled-components";
+import { Link as ReactLink } from 'react-router-dom'
+import styled from 'styled-components'
 
-import BackgroundLogo from "../../assets/background-login.svg";
-import Background from "../../assets/background.svg";
+import BackgroundLogo from '../../assets/background-login.svg'
+import Background from '../../assets/background.svg'
 
 export const Container = styled.div`
   display: flex;
   height: 100vh;
   width: 100vw;
-`;
+`
 
 export const LeftContainer = styled.div`
-  background: url("${BackgroundLogo}");
+  background: url('${BackgroundLogo}');
   background-size: cover;
   background-position: center;
 
@@ -26,7 +26,7 @@ export const LeftContainer = styled.div`
   img {
     width: 65%;
   }
-`;
+`
 
 export const RightContainer = styled.div`
   display: flex;
@@ -38,26 +38,25 @@ export const RightContainer = styled.div`
   width: 100%;
   max-width: 50%;
 
-  background: url("${Background}");
+  background: url('${Background}');
   background-size: cover;
   background-color: #1e1e1e;
 
   p {
-    color: #fff;
+    color: ${(props) => props.theme.white};
     font-size: 18px;
     font-weight: 800;
     a {
       text-decoration: underline;
     }
   }
-`;
+`
 
 export const Title = styled.h3`
-  font-family: "Road Rage", sans-serif;
+  font-family: 'Road Rage', sans-serif;
   font-size: 40px;
-  color: #9758a6;
-
-`;
+  color: ${(props) => props.theme.purple};
+`
 
 export const Form = styled.form`
   display: flex;
@@ -66,7 +65,7 @@ export const Form = styled.form`
   padding: 20px;
   width: 100%;
   max-width: 400px;
-`;
+`
 
 export const InputContainer = styled.div`
   display: flex;
@@ -85,19 +84,19 @@ export const InputContainer = styled.div`
   label {
     font-size: 18px;
     font-weight: 600;
-    color: #fff;
+    color: ${(props) => props.theme.white};
   }
 
   p {
     font-size: 14px;
     line-height: 80%;
-    color: #cf3057; /* Para mostrar erro em vermelho */
+    color: ${(props) => props.theme.darkRed}; /* Para mostrar erro em vermelho */
     font-weight: 600;
     height: 10px;
   }
-`;
+`
 export const Link = styled(ReactLink)`
-text-decoration: none;
-color: #fff;
-height: 10px;
+  text-decoration: none;
+  color: ${(props) => props.theme.white};
+  height: 10px;
 `

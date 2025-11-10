@@ -7,7 +7,7 @@ import BannerHamburger from '../../assets/banner-hamburger.svg'
 export const Container = styled.div`
   width: 100%;
   min-height: 100vh;
-  background-color: #f0f0f0;
+  background-color: ${(props) => props.theme.secondWhite};
 
   background:
     linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
@@ -23,7 +23,7 @@ export const Banner = styled.div`
   position: relative;
 
   background: url('${BannerHamburger}');
-  background-color: #1f1f1f;
+  background-color: ${(props) => props.theme.mainBlack};
   background-position: center;
   background-size: cover;
 
@@ -32,14 +32,14 @@ export const Banner = styled.div`
     font-size: 70px;
     line-height: 60px;
     position: absolute;
-    color: #fff;
+    color: ${(props) => props.theme.white};
 
     right: 13%;
     top: 20%;
 
     span {
       display: block;
-      color: #fff;
+      color: ${(props) => props.theme.white};
       font-size: 20px;
     }
   }
@@ -56,13 +56,15 @@ export const CategoryButton = styled(Link)`
   text-decoration: none;
   cursor: pointer;
   background: none;
-  color: ${(props) => (props.$isActiveCategoty ? '#9758a6;' : '#696969')};
+  color: ${(props) =>
+    props.$isActiveCategoty ? `${(props) => props.theme.purple}` : '#696969'};
   font-size: 24px;
   font-weight: 500;
   padding-bottom: 5px;
   line-height: 20px;
   border: none;
-  border-bottom: ${(props) => props.$isActiveCategoty && '3px solid #9758a6'};
+  border-bottom: ${(props) =>
+    props.$isActiveCategoty && `3px solid ${props.theme.purple}`};
 `
 
 export const ProductsContainer = styled.div`
@@ -93,12 +95,12 @@ export const ButtonVoltar = styled(Link)`
     right: 100%;
     width: 0;
     height: 4px;
-    background-color: #9758a6;
+    background-color: ${(props) => props.theme.purple};
     transition: all 0.3s ease;
   }
 
   &:hover::after {
-      right: 0;
+    right: 0;
     width: 100%;
   }
 `

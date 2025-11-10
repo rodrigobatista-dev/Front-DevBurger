@@ -8,7 +8,7 @@ api.interceptors.request.use((config) =>{
 
     const token = userData && JSON.parse(userData).token;
     
-    config.headers.authorization = `Bearer ${token}`; 
+    config.headers.Authorization = `Bearer ${token}`; 
     return config
 })
 export default api;

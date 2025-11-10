@@ -5,20 +5,17 @@ import Texture from '../../assets/texture.svg'
 
 export const Container = styled.div`
   width: 100%;
-  background-color: #f0f0f0;
- background: 
-     linear-gradient(
-       rgba(255, 255, 255, 0.5),
-       rgba(255, 255, 255, 0.5) 
-     ),
-     url('${Background}');
+  background-color: ${(props) => props.theme.secondWhite};
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
+    url('${Background}');
   min-height: 100vh;
   background-size: cover;
 `
 
 export const Banner = styled.div`
   background: url('${Texture}');
-  background-color: #1f1f1f;
+  background-color: ${(props) => props.theme.mainBlack};
   background-size: cover;
   display: flex;
   align-items: center;
@@ -36,7 +33,7 @@ export const Title = styled.h1`
   font-size: 32px;
   font-weight: 800;
   padding-bottom: 12px;
-  color: #61a120;
+  color: ${(props) => props.theme.green};
   text-align: center;
   position: relative;
   &::after {
@@ -46,7 +43,7 @@ export const Title = styled.h1`
     content: '';
     width: 56px;
     height: 4px;
-    background-color: #61a120;
+    background-color: ${(props) => props.theme.green};
   }
 `
 

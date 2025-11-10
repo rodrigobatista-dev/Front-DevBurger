@@ -21,7 +21,7 @@ import {
 
 export function Login() {
   const navigate = useNavigate()
-  const { putUserData } = useUser();
+  const { putUserData } = useUser()
 
   const schema = yup
     .object({
@@ -56,7 +56,11 @@ export function Login() {
         success: {
           render() {
             setTimeout(() => {
-              navigate('/home')
+              if (userData?.admin) {
+                navigate('/admin/pedidos')
+              } else {
+                navigate('/home')
+              }
             }, 2000)
 
             return `Seja Bem-vindo(a) 👌`
@@ -64,10 +68,9 @@ export function Login() {
         },
         error: 'Email ou Senha Incorretos 🤯',
       },
-    );
-    putUserData(userData);
-    
-  };
+    )
+    putUserData(userData)
+  }
 
   return (
     <Container>

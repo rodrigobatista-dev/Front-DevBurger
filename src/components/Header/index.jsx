@@ -16,10 +16,9 @@ import {
 
 export function Header() {
   const navigate = useNavigate()
-  const {logout, userInfo  } = useUser()
+  const { logout, userInfo } = useUser()
 
   const { pathname } = useResolvedPath()
-  
 
   function logoutUser() {
     logout()
@@ -42,7 +41,7 @@ export function Header() {
         </Navigation>
         <Options>
           <Profile>
-            <UserCircleIcon color="#fff" size={24} />
+            <UserCircleIcon color="${(props)} => props.theme.white}" size={24} />
             <div>
               <p>
                 Olá, <span>{userInfo.name}</span>
@@ -51,8 +50,11 @@ export function Header() {
             </div>
           </Profile>
           <LinkContainer>
-            <ShoppingCartIcon color="#fff" size={24} />
-            <HeaderLink to='/carrinho'>Carrinho</HeaderLink>
+            <ShoppingCartIcon
+              color="${(props)} => props.theme.white}"
+              size={24}
+            />
+            <HeaderLink to="/carrinho">Carrinho</HeaderLink>
           </LinkContainer>
         </Options>
       </Content>

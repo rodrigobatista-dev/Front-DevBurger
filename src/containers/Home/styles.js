@@ -7,34 +7,28 @@ export const Banner = styled.div`
   background: url('${BannerHome}');
   background-size: cover;
   background-position: center;
-  height: 500px;
+  height: 400px;
   margin: auto;
 
   h1 {
     font-family: 'Road Rage', sans-serif;
     font-size: 80px;
-    color: #f4f4f4;
+    color: ${(props) => props.theme.darkWhite};
     position: absolute;
     right: 15%;
-    top: 10%;
+    top: 20%;
   }
 `
 
 export const Container = styled.section`
-  background: 
-    linear-gradient(
-      rgba(255, 255, 255, 0.5),
-      rgba(255, 255, 255, 0.5) 
-    ),
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),
     url('${Background}');
-    
+
   background-position: center;
   background-size: cover;
   background-repeat: no-repeat;
 
   width: 100%;
-  min-height: 100vh; 
-`;
-
-
-
+  min-height: 100vh;
+`
