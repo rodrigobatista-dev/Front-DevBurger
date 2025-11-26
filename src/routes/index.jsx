@@ -26,7 +26,7 @@ export function Router() {
       <Route path="/admin" element={<AdminLayout />}>
         <Route path="/admin/pedidos" element={<Orders />} />
         <Route path="/admin/novo-produto" element={<NewProduct />} />
-        <Route path="/admin/produtos/:id" element={<EditProduct />} />  
+        <Route path="/admin/editar-produto" element={<EditProduct />} />  
         <Route path="/admin/produtos" element={<Products />} />
       </Route>
 
